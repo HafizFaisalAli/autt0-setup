@@ -1,10 +1,7 @@
-import { NextApiRequest, NextApiResponse } from "next";
+import type { NextApiRequest, NextApiResponse } from "next";
 import request from "request";
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "POST") {
     const options = {
       method: "POST",
@@ -19,7 +16,7 @@ export default async function handler(
       }),
     };
 
-    request(options, function (error, response, body) {
+    request(options, (error, response, body) => {
       if (error) {
         console.error("Error getting token:", error);
         res.status(500).json({ error: "Failed to get token" });
@@ -33,4 +30,6 @@ export default async function handler(
     res.setHeader("Allow", ["POST"]);
     res.status(405).end(`Method ${req.method} Not Allowed`);
   }
-}
+};
+
+export default handler;
