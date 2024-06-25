@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
+    console.log(body);
 
     const response = await fetch(
       "https://dev-q53dzuk0m4ze6hvy.us.auth0.com/dbconnections/signup",
@@ -13,8 +14,8 @@ export async function POST(req: NextRequest) {
         },
         body: JSON.stringify({
           client_id: "m4kc3OhyVh35XEKXD9DTHeQ8e6ikAIBf",
-          email: "user8@gmail.com",
-          password: "12345678$Ahe",
+          email: body.email,
+          password: body.password,
           connection: "Username-Password-Authentication",
           //   username: "johndoe",
           //   given_name: "John",
