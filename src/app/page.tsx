@@ -1,9 +1,12 @@
-import Image from "next/image";
-
 export default function Home() {
   return (
     <>
-      <h1 className="text-3xl font-bold underline text-center">Hello world!</h1>
+      <div className="flex justify-center font-semibold items-center ">
+        <img
+          src="https://static-00.iconduck.com/assets.00/auth0-icon-512x512-3wef3www.png"
+          alt="Auth0 Pic"
+        />
+      </div>
     </>
   );
 }

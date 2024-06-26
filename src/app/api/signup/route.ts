@@ -6,14 +6,14 @@ export async function POST(req: NextRequest) {
     console.log(body);
 
     const response = await fetch(
-      "https://dev-q53dzuk0m4ze6hvy.us.auth0.com/dbconnections/signup",
+      `${process.env.AUTH0_ISSUER_BASE_URL}/dbconnections/signup`,
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          client_id: "m4kc3OhyVh35XEKXD9DTHeQ8e6ikAIBf",
+          client_id: process.env.AUTH0_CLIENT_ID,
           email: body.email,
           password: body.password,
           connection: "Username-Password-Authentication",
