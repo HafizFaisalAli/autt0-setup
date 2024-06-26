@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
+    console.log(body);
 
     const response = await fetch(
       "https://dev-q53dzuk0m4ze6hvy.us.auth0.com/oauth/token",
@@ -12,11 +13,14 @@ export async function POST(req: NextRequest) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          client_id: "m4kc3OhyVh35XEKXD9DTHeQ8e6ikAIBf",
-          client_secret:
-            "RgiFO5KriIl5gp1ib6IgrMtH1ylzDqC8A2QgQYlrcz6AAoac1jJ90cRc3ltJm7Y3",
-          audience: "https://auth-app",
-          grant_type: "client_credentials",
+          client_id: process.env.AUTH0_CLIENT_ID,
+          client_secret: process.env.AUTH0_CLIENT_SECRET,
+          audience: process.env.AUTH0_AUDIENCE,
+          grant_type: process.env.AUTH0_GRANT_TYPE,
+          username: body.email,
+          password: body.password,
+          realm: process.env.AUTH0_REALM,
+          // scope: "openid",
         }),
       }
     );

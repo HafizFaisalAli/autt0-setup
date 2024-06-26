@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+// import { getAccessToken } from "@auth0/nextjs-auth0/";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
@@ -8,11 +9,13 @@ const SignIn = () => {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-
+    // const { accessToken } = await getAccessToken();
+    // console.log(accessToken);
     const response = await fetch("/api/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        // authorization: `Bearer ${accessToken}`,
       },
       body: JSON.stringify({ email, password }),
     });
