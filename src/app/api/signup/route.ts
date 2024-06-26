@@ -16,7 +16,7 @@ export async function POST(req: NextRequest) {
           client_id: process.env.AUTH0_CLIENT_ID,
           email: body.email,
           password: body.password,
-          connection: "Username-Password-Authentication",
+          connection: process.env.AUTH0_CONNECTION,
           //   username: "johndoe",
           //   given_name: "John",
           //   family_name: "Doe",

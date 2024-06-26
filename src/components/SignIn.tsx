@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+// import { getAccessToken } from "@auth0/nextjs-auth0/";
 
 
 const SignIn = () => {
@@ -11,11 +12,11 @@ const SignIn = () => {
   
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    
     const response = await fetch("/api/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        // authorization: `Bearer ${accessToken}`,
       },
       body: JSON.stringify({ email, password }),
     });
